@@ -21,7 +21,6 @@ public class Shipment {
     @Id
     private Long id;
 
-    @Setter(AccessLevel.NONE)
     @Column(length = 100, nullable = false, unique = true)
     private String code;
 
