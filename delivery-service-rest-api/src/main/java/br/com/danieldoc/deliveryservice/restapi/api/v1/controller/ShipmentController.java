@@ -2,23 +2,20 @@ package br.com.danieldoc.deliveryservice.restapi.api.v1.controller;
 
 import br.com.danieldoc.deliveryservice.business.service.ShipmentService;
 import br.com.danieldoc.deliveryservice.domain.entity.Shipment;
+import br.com.danieldoc.deliveryservice.restapi.api.v1.ShipmentApi;
 import br.com.danieldoc.deliveryservice.restapi.api.v1.mapper.ShipmentMapper;
 import br.com.danieldoc.deliveryservice.restapi.api.v1.request.ShipmentRequest;
 import br.com.danieldoc.deliveryservice.restapi.api.v1.response.ShipmentResponse;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
 @Slf4j
-@RequestMapping("/api/v1/shipments")
 @RestController
-public class ShipmentController {
+public class ShipmentController implements ShipmentApi {
 
     private final ShipmentService shipmentService;
     private final ShipmentMapper shipmentMapper;
@@ -29,8 +26,8 @@ public class ShipmentController {
         this.shipmentMapper = shipmentMapper;
     }
 
-    @GetMapping("/{code}")
-    public ShipmentResponse getDetail(@NotBlank @PathVariable String code) {
+    @Override
+    public ShipmentResponse getDetail(String code) {
         log.info("Start getDetail with code={}", code);
 
         final Shipment shipment = shipmentService.getDetail(code);
@@ -40,9 +37,8 @@ public class ShipmentController {
         return response;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public ResponseEntity<ShipmentResponse> create(@Valid @RequestBody ShipmentRequest shipmentRequest) {
+    @Override
+    public ResponseEntity<ShipmentResponse> create(ShipmentRequest shipmentRequest) {
         log.info("Start create shipment");
 
         Shipment shipment = shipmentMapper.toShipment(shipmentRequest);
@@ -61,9 +57,8 @@ public class ShipmentController {
                 .body(createdShipment);
     }
 
-    @PutMapping("/{code}")
-    public ShipmentResponse update(@NotBlank @PathVariable String code,
-                                   @Valid @RequestBody ShipmentRequest shipmentRequest) {
+    @Override
+    public ShipmentResponse update(String code, ShipmentRequest shipmentRequest) {
         log.info("Start update shipment with code={}", code);
 
         Shipment shipment = shipmentService.getDetail(code);
@@ -75,9 +70,8 @@ public class ShipmentController {
         return response;
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{code}")
-    public void delete(@NotBlank @PathVariable String code) {
+    @Override
+    public void delete(String code) {
         log.info("Start delete with code={}", code);
 
         shipmentService.deleteByCode(code);
