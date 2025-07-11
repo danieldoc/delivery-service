@@ -8,4 +8,12 @@
     </parent>
 
     <artifactId>delivery-service-repository</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>br.com.danieldoc</groupId>
+            <artifactId>delivery-service-domain</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>
