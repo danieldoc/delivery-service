@@ -16,3 +16,6 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
+
+  messages:
+    basename: i18n/messages
