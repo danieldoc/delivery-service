@@ -1,0 +1,22 @@
+CREATE TABLE shipment (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(100) NOT NULL UNIQUE,
+    package_quantity INTEGER NOT NULL,
+    delivery_deadline TIMESTAMP NOT NULL,
+    customer_document VARCHAR(30) NOT NULL,
+    customer_full_name VARCHAR(255) NOT NULL,
+    customer_cellphone VARCHAR(30),
+    customer_email VARCHAR(60),
+    address_street VARCHAR(255) NOT NULL,
+    address_number VARCHAR(30) NOT NULL,
+    address_neighborhood VARCHAR(60) NOT NULL,
+    address_complement VARCHAR(20),
+    address_city VARCHAR(100) NOT NULL,
+    address_state VARCHAR(60) NOT NULL,
+    address_postal_code VARCHAR(20) NOT NULL,
+    address_reference_point VARCHAR(255),
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL,
+    version INTEGER NOT NULL,
+    deleted BOOLEAN NOT NULL DEFAULT FALSE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
