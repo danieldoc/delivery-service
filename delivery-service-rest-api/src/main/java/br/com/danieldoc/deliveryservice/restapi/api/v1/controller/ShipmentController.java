@@ -8,7 +8,11 @@ import br.com.danieldoc.deliveryservice.restapi.api.v1.response.ShipmentResponse
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RequestMapping("/api/v1/shipments")
 @RestController
@@ -31,10 +35,20 @@ public class ShipmentController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ShipmentResponse create(@Valid @RequestBody ShipmentRequest shipmentRequest) {
+    public ResponseEntity<ShipmentResponse> create(@Valid @RequestBody ShipmentRequest shipmentRequest) {
         Shipment shipment = shipmentMapper.toShipment(shipmentRequest);
         shipment = shipmentService.save(shipment);
-        return shipmentMapper.toResponse(shipment);
+
+        final ShipmentResponse createdShipment = shipmentMapper.toResponse(shipment);
+
+        final URI locationUri = ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/{code}")
+                .buildAndExpand(createdShipment.getCode())
+                .toUri();
+
+        return ResponseEntity
+                .created(locationUri)
+                .body(createdShipment);
     }
 
     @PutMapping("/{code}")
