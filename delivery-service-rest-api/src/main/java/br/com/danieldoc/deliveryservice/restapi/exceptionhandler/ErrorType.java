@@ -7,11 +7,11 @@ import lombok.Getter;
 @Getter
 public enum ErrorType {
 
-    INVALID_DATA("Invalid Data"),
-    MALFORMED_REQUEST("Request in malformed format"),
-    BUSINESS_VIOLATION("Business rule violation"),
-    NOT_FOUND("Resource not found"),
-    SERVER_ERROR("Server error"),;
+    INVALID_DATA("Dados inválidos"),
+    MALFORMED_REQUEST("Request malformado"),
+    BUSINESS_VIOLATION("Violação de regra de negócio"),
+    NOT_FOUND("Recurso não encontrado"),
+    SERVER_ERROR("Erro interno do servidor"),;
 
     private final String title;
 }
