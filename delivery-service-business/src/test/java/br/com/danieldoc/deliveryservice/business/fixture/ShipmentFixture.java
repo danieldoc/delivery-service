@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 public final class ShipmentFixture {
 
     private ShipmentFixture() {
-        throw new UnsupportedOperationException();
+        throw new IllegalStateException("Utility class");
     }
 
     public static Shipment createTestShipment(String code) {
