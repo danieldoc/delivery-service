@@ -23,7 +23,7 @@ public class ShipmentServiceImpl implements ShipmentService {
         log.info("Start find shipment by code={}", code);
 
         final Shipment shipment = shipmentRepository.findByCodeAndNotDeleted(code)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Shipment with code %s not found", code)));
 
         log.info("End find shipment by code={}", code);
         return shipment;
