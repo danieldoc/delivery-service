@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-class ShipmentControllerTest {
+class ShipmentControllerIT {
 
     public static final String SHIPMENTS = "/v1/shipments";
 
@@ -49,16 +49,16 @@ class ShipmentControllerTest {
                 .andExpect(jsonPath("$.deliveryDeadline").value(shipment.getDeliveryDeadline().toString()))
                 .andExpect(jsonPath("$.customer.document").value(shipment.getCustomer().getDocument()))
                 .andExpect(jsonPath("$.customer.fullName").value(shipment.getCustomer().getFullName()))
-                .andExpect(jsonPath("$.customer.cellphone").doesNotExist())
-                .andExpect(jsonPath("$.customer.email").doesNotExist())
+                .andExpect(jsonPath("$.customer.cellphone").isEmpty())
+                .andExpect(jsonPath("$.customer.email").isEmpty())
                 .andExpect(jsonPath("$.address.street").value(shipment.getAddress().getStreet()))
                 .andExpect(jsonPath("$.address.number").value(shipment.getAddress().getNumber()))
                 .andExpect(jsonPath("$.address.neighborhood").value(shipment.getAddress().getNeighborhood()))
-                .andExpect(jsonPath("$.address.complement").doesNotExist())
+                .andExpect(jsonPath("$.address.complement").isEmpty())
                 .andExpect(jsonPath("$.address.city").value(shipment.getAddress().getCity()))
                 .andExpect(jsonPath("$.address.state").value(shipment.getAddress().getState()))
                 .andExpect(jsonPath("$.address.postalCode").value(shipment.getAddress().getPostalCode()))
-                .andExpect(jsonPath("$.address.referencePoint").doesNotExist())
+                .andExpect(jsonPath("$.address.referencePoint").isEmpty())
                 .andExpect(jsonPath("$.createdAt").value(shipment.getCreatedAt().toString()))
                 .andExpect(jsonPath("$.updatedAt").value(shipment.getUpdatedAt().toString()))
         ;
@@ -81,16 +81,16 @@ class ShipmentControllerTest {
                 .andExpect(jsonPath("$.deliveryDeadline").value(shipment.getDeliveryDeadline().toString()))
                 .andExpect(jsonPath("$.customer.document").value(shipment.getCustomer().getDocument()))
                 .andExpect(jsonPath("$.customer.fullName").value(shipment.getCustomer().getFullName()))
-                .andExpect(jsonPath("$.customer.cellphone").doesNotExist())
-                .andExpect(jsonPath("$.customer.email").doesNotExist())
+                .andExpect(jsonPath("$.customer.cellphone").isEmpty())
+                .andExpect(jsonPath("$.customer.email").isEmpty())
                 .andExpect(jsonPath("$.address.street").value(shipment.getAddress().getStreet()))
                 .andExpect(jsonPath("$.address.number").value(shipment.getAddress().getNumber()))
                 .andExpect(jsonPath("$.address.neighborhood").value(shipment.getAddress().getNeighborhood()))
-                .andExpect(jsonPath("$.address.complement").doesNotExist())
+                .andExpect(jsonPath("$.address.complement").isEmpty())
                 .andExpect(jsonPath("$.address.city").value(shipment.getAddress().getCity()))
                 .andExpect(jsonPath("$.address.state").value(shipment.getAddress().getState()))
                 .andExpect(jsonPath("$.address.postalCode").value(shipment.getAddress().getPostalCode()))
-                .andExpect(jsonPath("$.address.referencePoint").doesNotExist())
+                .andExpect(jsonPath("$.address.referencePoint").isEmpty())
                 .andExpect(jsonPath("$.createdAt").value(shipment.getCreatedAt().toString()))
                 .andExpect(jsonPath("$.updatedAt").value(shipment.getUpdatedAt().toString()));
     }
@@ -109,7 +109,7 @@ class ShipmentControllerTest {
                 .andExpect(jsonPath("$.code").value(ErrorType.NOT_FOUND.name()))
                 .andExpect(jsonPath("$.title").value(ErrorType.NOT_FOUND.getTitle()))
                 .andExpect(jsonPath("$.description").value("Shipment not found with code: " + invalidCode))
-                .andExpect(jsonPath("$.fields").doesNotExist());
+                .andExpect(jsonPath("$.fields").isEmpty());
     }
 
     @Test
@@ -126,16 +126,16 @@ class ShipmentControllerTest {
                 .andExpect(jsonPath("$.deliveryDeadline").value(shipment.getDeliveryDeadline().toString()))
                 .andExpect(jsonPath("$.customer.document").value(shipment.getCustomer().getDocument()))
                 .andExpect(jsonPath("$.customer.fullName").value(shipment.getCustomer().getFullName()))
-                .andExpect(jsonPath("$.customer.cellphone").doesNotExist())
-                .andExpect(jsonPath("$.customer.email").doesNotExist())
+                .andExpect(jsonPath("$.customer.cellphone").isEmpty())
+                .andExpect(jsonPath("$.customer.email").isEmpty())
                 .andExpect(jsonPath("$.address.street").value(shipment.getAddress().getStreet()))
                 .andExpect(jsonPath("$.address.number").value(shipment.getAddress().getNumber()))
                 .andExpect(jsonPath("$.address.neighborhood").value(shipment.getAddress().getNeighborhood()))
-                .andExpect(jsonPath("$.address.complement").doesNotExist())
+                .andExpect(jsonPath("$.address.complement").isEmpty())
                 .andExpect(jsonPath("$.address.city").value(shipment.getAddress().getCity()))
                 .andExpect(jsonPath("$.address.state").value(shipment.getAddress().getState()))
                 .andExpect(jsonPath("$.address.postalCode").value(shipment.getAddress().getPostalCode()))
-                .andExpect(jsonPath("$.address.referencePoint").doesNotExist())
+                .andExpect(jsonPath("$.address.referencePoint").isEmpty())
                 .andExpect(jsonPath("$.createdAt").value(shipment.getCreatedAt().toString()))
                 .andExpect(jsonPath("$.updatedAt").value(shipment.getUpdatedAt().toString()));
     }
@@ -152,7 +152,7 @@ class ShipmentControllerTest {
                 .andExpect(jsonPath("$.code").value(ErrorType.NOT_FOUND.name()))
                 .andExpect(jsonPath("$.title").value(ErrorType.NOT_FOUND.getTitle()))
                 .andExpect(jsonPath("$.description").value("Shipment not found with code: " + invalidCode))
-                .andExpect(jsonPath("$.fields").doesNotExist());
+                .andExpect(jsonPath("$.fields").isEmpty());
     }
 
     @Test
@@ -175,7 +175,7 @@ class ShipmentControllerTest {
                 .andExpect(jsonPath("$.code").value(ErrorType.NOT_FOUND.name()))
                 .andExpect(jsonPath("$.title").value(ErrorType.NOT_FOUND.getTitle()))
                 .andExpect(jsonPath("$.description").value("Shipment not found with code: " + invalidCode))
-                .andExpect(jsonPath("$.fields").doesNotExist());
+                .andExpect(jsonPath("$.fields").isEmpty());
     }
 
     private String getShipmentRequestJsonBody() {

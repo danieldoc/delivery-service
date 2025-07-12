@@ -44,6 +44,8 @@ class ShipmentRepositoryTest {
         this.shipmentDeleted = entityManager.merge(ShipmentFixture.createTestShipment());
         this.shipmentDeleted.deleteIt();
         this.shipmentDeleted = entityManager.merge(this.shipmentDeleted);
+
+        entityManager.flush();
     }
 
     @Test
