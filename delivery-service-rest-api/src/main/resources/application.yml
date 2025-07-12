@@ -9,12 +9,12 @@ server:
 
 spring:
   application:
-    name: delivery-service-api
+    name: delivery-service-rest-api
 
   datasource:
-    url: jdbc:mysql://localhost:3306/delivery_service_db?serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:delivery_service_db}?serverTimezone=UTC
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       pool-name: DeliveryServiceHikariPool
