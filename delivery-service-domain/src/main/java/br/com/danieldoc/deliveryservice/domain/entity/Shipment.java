@@ -2,8 +2,6 @@ package br.com.danieldoc.deliveryservice.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -36,11 +34,11 @@ public class Shipment {
     @Embedded
     private Address address;
 
-    @CreationTimestamp
+    @Setter(AccessLevel.NONE)
     @Column(nullable = false)
     private OffsetDateTime createdAt;
 
-    @UpdateTimestamp
+    @Setter(AccessLevel.NONE)
     @Column(nullable = false)
     private OffsetDateTime updatedAt;
 
@@ -56,6 +54,13 @@ public class Shipment {
     private void prePersist() {
         this.code = UUID.randomUUID().toString();
         this.deleted = false;
+        this.createdAt = OffsetDateTime.now();
+        this.updatedAt = OffsetDateTime.now();
+    }
+
+    @PreUpdate
+    private void preUpdate() {
+        this.updatedAt = OffsetDateTime.now();
     }
 
     public void deleteIt() {
