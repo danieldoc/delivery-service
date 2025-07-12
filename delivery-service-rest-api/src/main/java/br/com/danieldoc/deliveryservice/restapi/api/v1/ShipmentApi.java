@@ -71,19 +71,19 @@ public interface ShipmentApi {
             }
             """;
 
-    String NOT_FOUND_EXAMPLE = """
+    String NOT_FOUND_RESPONSE_EXAMPLE = """
             {
                 "code": "NOT_FOUND",
-                "title": "Recurso não encontrado",
-                "description": "Recurso não encontrado.",
+                "title": "Resource not found",
+                "description": "Shipment with code 862d255e-efae-4404-b894-135c054542f not found",
                 "fields": null
             }
             """;
 
-    String INTERNAL_SERVER_ERROR = """
+    String SERVER_ERROR_RESPONSE_EXAMPLE = """
             {
-                "code": "INTERNAL_SERVER_ERROR",
-                "title": "Erro no servidor",
+                "code": "SERVER_ERROR",
+                "title": "Server error",
                 "description": "Ocorreu um erro interno inesperado no sistema. Tente novamente e, se o problema persistir, entre em contato com o administrador do sistema..",
                 "fields": null
             }
@@ -92,8 +92,8 @@ public interface ShipmentApi {
     @Operation(summary = "Get a shipment by code")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shipment found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SHIPMENT_RESPONSE_EXAMPLE))),
-            @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_EXAMPLE))),
-            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = INTERNAL_SERVER_ERROR))),
+            @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_RESPONSE_EXAMPLE))),
+            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
     })
     @GetMapping("/{code}")
     ShipmentResponse getDetail(@Parameter(description = "Shipment Identifier", example = "862d255e-efae-4404-b894-135c054542ff") @NotBlank @PathVariable String code);
@@ -102,7 +102,7 @@ public interface ShipmentApi {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Successfully created", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SHIPMENT_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "400", description = "Validation error occurred", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = INTERNAL_SERVER_ERROR))),
+            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -117,8 +117,8 @@ public interface ShipmentApi {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully updated", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SHIPMENT_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "400", description = "Validation error occurred", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_EXAMPLE))),
-            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = INTERNAL_SERVER_ERROR))),
+            @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_RESPONSE_EXAMPLE))),
+            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
     })
     @PutMapping("/{code}")
     ShipmentResponse update(@Parameter(description = "Shipment Identifier", example = "862d255e-efae-4404-b894-135c054542ff")
@@ -133,8 +133,8 @@ public interface ShipmentApi {
     @Operation(summary = "Delete a shipment by code")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Successfully deleted"),
-            @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_EXAMPLE))),
-            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = INTERNAL_SERVER_ERROR))),
+            @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_RESPONSE_EXAMPLE))),
+            @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{code}")
