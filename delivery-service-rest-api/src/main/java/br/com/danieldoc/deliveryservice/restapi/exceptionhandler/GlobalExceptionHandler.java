@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -39,6 +40,21 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 null);
         return ResponseEntity
                 .badRequest()
+                .body(errorResponse);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException ex,
+                                                                    HttpHeaders headers,
+                                                                    HttpStatusCode status,
+                                                                    WebRequest request) {
+        String detail = messageSource.getMessage("exception.resourceNotFound", null, LocaleContextHolder.getLocale());
+        final ErrorResponse errorResponse = new ErrorResponse(ErrorType.NOT_FOUND,
+                ErrorType.NOT_FOUND.getTitle(),
+                detail,
+                null);
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
                 .body(errorResponse);
     }
 
@@ -80,8 +96,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(EntityNotFoundException e) {
-        String detail = messageSource.getMessage("exception.entityNotFound", null, LocaleContextHolder.getLocale());
-        final ErrorResponse errorResponse = new ErrorResponse(ErrorType.NOT_FOUND, ErrorType.NOT_FOUND.getTitle(), detail, null);
+        final ErrorResponse errorResponse = new ErrorResponse(ErrorType.NOT_FOUND,
+                ErrorType.NOT_FOUND.getTitle(),
+                e.getMessage(),
+                null);
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(errorResponse);
@@ -92,7 +110,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("Ocorreu uma exceção não tratada: {}", ex.getMessage(), ex);
 
         String message = messageSource.getMessage("exception.internalServerError", null, LocaleContextHolder.getLocale());
-        final ErrorResponse errorResponse = new ErrorResponse(ErrorType.INTERNAL_SERVER_ERROR, ErrorType.INTERNAL_SERVER_ERROR.getTitle(), message, null);
+        final ErrorResponse errorResponse = new ErrorResponse(ErrorType.SERVER_ERROR, ErrorType.SERVER_ERROR.getTitle(), message, null);
 
         return ResponseEntity
                 .internalServerError()
