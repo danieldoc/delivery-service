@@ -87,7 +87,7 @@ public class ShipmentMapper {
         shipment.getAddress().setCity(shipmentRequest.getAddress().getCity());
         shipment.getAddress().setState(shipmentRequest.getAddress().getState());
         shipment.getAddress().setPostalCode(shipmentRequest.getAddress().getPostalCode());
-        shipment.getAddress().setComplement(shipmentRequest.getAddress().getComplement());
+        shipment.getAddress().setReferencePoint(shipmentRequest.getAddress().getReferencePoint());
 
         return shipment;
     }
