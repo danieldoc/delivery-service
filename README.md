@@ -1,13 +1,12 @@
 # <center>Delivery Service</center>
-
-Este repositório contém o **Delivery Service REST API**, uma aplicação REST para gestão de entregas em logística, organizada em módulos Maven. \
-A solução utiliza MySQL em produção, H2 e Mockito em testes, migrações com Flyway, monitoramento com Actuator e documentação interativa via OpenAPI/Swagger. A containerização fica a cargo de Docker e Docker Compose, e os logs são gerenciados por SLF4J/Logback.
+<center>Uma aplicação REST para gestão de entregas em logística.</center>
 
 ---
 
-## Funcionalidades Principais
+## Sobre a Aplicação
 
-- Gestão de pedidos de entrega via endpoints RESTful
+A solução, organizada em módulos Maven, utiliza MySQL em produção, H2 e Mockito em testes, migrações com Flyway, monitoramento com Actuator e documentação interativa via OpenAPI/Swagger. A containerização fica a cargo de Docker e Docker Compose, e os logs são gerenciados por SLF4J/Logback.
+
 - Persistência de dados com Spring Data JPA e MySQL
 - Versionamento de esquema de banco com Flyway
 - Monitoramento e health checks expostos pelo Spring Boot Actuator
@@ -15,6 +14,7 @@ A solução utiliza MySQL em produção, H2 e Mockito em testes, migrações com
 - Arquitetura multi-módulo Maven (rest-api, business, repository, domain)
 - Testes:
    - Repositório: `@DataJpaTest` com H2 em memória
+   - Service: Testes unitários com `Mockito`
    - Controller: Requisições e checagens via `MockMvc`
 - Containerização com Docker e orquestração via Docker Compose
 - Perfis de configuração (`default` , `test`)
@@ -29,6 +29,7 @@ A solução utiliza MySQL em produção, H2 e Mockito em testes, migrações com
 - MySQL 8
 - H2 Database (testes de repositório)
 - JUnit 5 & Mockito
+- Lombok
 - Maven
 - Flyway
 - HikariCP (pool de conexões)
@@ -69,30 +70,34 @@ delivery-service
 
 ### 1. Clonar o repositório
 
+No terminal, execute os seguintes comandos:
 ```bash
 git clone git@github.com:danieldoc/delivery-service.git
+```
+```bash
 cd delivery-service
 ```
-### 2. Executar com Docker Compose (recomendado)
 
-```bash
-docker compose up --build -d
-```
+### 2. Execução
 
-- `--build` constrói a aplicação
-- `-d` Executa em segundo plano
+- ### 2.1 Utilizando Docker Compose (recomendado)
+
+   ```bash
+   docker compose up --build -d
+   ```
+
+- ### 2.2 Utilizando estrutura local (Java/Maven/MySQL)
+
+   ```bash
+   mvn clean spring-boot:run -pl delivery-service-rest-api
+   ```
+
+O perfil `default` conecta ao MySQL (local ou container), aplica Flyway e expõe o Actuator em `/actuator`.
 
 A API ficará disponível em `http://localhost:8080/api` e o Swagger em `http://localhost:8080/api/swagger-ui/index.html`.
 
+
 ---
-
-### 3. Executar localmente (Maven)
-
-```bash
-mvn clean spring-boot:run -pl delivery-service-rest-api
-```
-
-O perfil `default` conecta ao MySQL (local ou container), aplica Flyway e expõe o Actuator em `/actuator`.
 
 ## Perfis de Configuração
 
@@ -119,4 +124,4 @@ Para monitoramento de status do serviço:
 
 ### Pool de Conexões
 
-A aplicação utiliza **HikariCP** como pool de conexões JDBC. O Hikari oferece alta performance, baixo consumo de recursos e configuração automática para a maioria dos cenários. Os parâmetros podem ser ajustados via `application.yml` conforme a necessidade de tuning.
+A aplicação utiliza **HikariCP** como pool de conexões JDBC. O Hikari oferece alta performance e baixo consumo de recursos. Os parâmetros podem ser ajustados via `application.yml` conforme a necessidade do serviço.
