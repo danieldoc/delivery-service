@@ -38,7 +38,7 @@ public final class ShipmentFixture {
                 .neighborhood("Bairro da Qualidade")
                 .city("São Paulo")
                 .state("SP")
-                .postalCode("01234-567")
+                .zipCode("01234-567")
                 .referencePoint("Próximo ao Parque do Ibirapuera")
                 .build();
     }

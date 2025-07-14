@@ -53,7 +53,7 @@ public final class ConstOpenApiResponse {
                         "complement": null,
                         "city": "São Paulo",
                         "state": "SP",
-                        "postalCode": "01310200",
+                        "zipCode": "01310200",
                         "referencePoint": null
                     }
                 }
@@ -77,7 +77,7 @@ public final class ConstOpenApiResponse {
                     "complement": null,
                     "city": "São Paulo",
                     "state": "SP",
-                    "postalCode": "01310200",
+                    "zipCode": "01310200",
                     "referencePoint": null
                   },
                   "createdAt": "2025-07-11T01:01:50.911037-03:00",

@@ -34,7 +34,7 @@ public class AddressRequest {
 
     @Size(min = 8, max = 8)
     @NotBlank
-    private String postalCode;
+    private String zipCode;
 
     @Size(max = 255)
     private String referencePoint;

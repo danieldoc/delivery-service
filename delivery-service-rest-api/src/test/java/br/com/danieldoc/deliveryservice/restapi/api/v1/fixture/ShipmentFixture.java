@@ -35,7 +35,7 @@ public final class ShipmentFixture {
                         .complement(null)
                         .city("São Paulo")
                         .state("SP")
-                        .postalCode("01310200")
+                        .zipCode("01310200")
                         .referencePoint(null)
                         .build())
                 .createdAt(OffsetDateTime.parse("2025-07-31T23:59:59Z", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
@@ -62,7 +62,7 @@ public final class ShipmentFixture {
         address.setComplement("Apto 99");
         address.setCity("Nova Cidade");
         address.setState("NS");
-        address.setPostalCode("99999999");
+        address.setZipCode("99999999");
         address.setReferencePoint("Shopping");
         request.setAddress(address);
 

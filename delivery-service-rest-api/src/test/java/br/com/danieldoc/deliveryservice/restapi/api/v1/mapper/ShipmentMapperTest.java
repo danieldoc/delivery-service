@@ -54,7 +54,7 @@ class ShipmentMapperTest {
         assertEquals(shipment.getAddress().getComplement(), response.getAddress().getComplement());
         assertEquals(shipment.getAddress().getCity(), response.getAddress().getCity());
         assertEquals(shipment.getAddress().getState(), response.getAddress().getState());
-        assertEquals(shipment.getAddress().getPostalCode(), response.getAddress().getPostalCode());
+        assertEquals(shipment.getAddress().getZipCode(), response.getAddress().getZipCode());
         assertEquals(shipment.getAddress().getReferencePoint(), response.getAddress().getReferencePoint());
     }
 
@@ -83,7 +83,7 @@ class ShipmentMapperTest {
         assertEquals(request.getAddress().getComplement(), shipment.getAddress().getComplement());
         assertEquals(request.getAddress().getCity(), shipment.getAddress().getCity());
         assertEquals(request.getAddress().getState(), shipment.getAddress().getState());
-        assertEquals(request.getAddress().getPostalCode(), shipment.getAddress().getPostalCode());
+        assertEquals(request.getAddress().getZipCode(), shipment.getAddress().getZipCode());
         assertEquals(request.getAddress().getReferencePoint(), shipment.getAddress().getReferencePoint());
     }
 
@@ -110,7 +110,7 @@ class ShipmentMapperTest {
         assertEquals(request.getAddress().getComplement(), shipment.getAddress().getComplement());
         assertEquals(request.getAddress().getCity(), shipment.getAddress().getCity());
         assertEquals(request.getAddress().getState(), shipment.getAddress().getState());
-        assertEquals(request.getAddress().getPostalCode(), shipment.getAddress().getPostalCode());
+        assertEquals(request.getAddress().getZipCode(), shipment.getAddress().getZipCode());
         assertEquals(request.getAddress().getReferencePoint(), shipment.getAddress().getReferencePoint());
     }
 }

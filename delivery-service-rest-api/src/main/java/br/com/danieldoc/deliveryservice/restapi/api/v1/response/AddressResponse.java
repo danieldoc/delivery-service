@@ -15,6 +15,6 @@ public class AddressResponse {
     private String complement;
     private String city;
     private String state;
-    private String postalCode;
+    private String zipCode;
     private String referencePoint;
 }

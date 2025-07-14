@@ -63,7 +63,7 @@ class ShipmentControllerIT {
                 .andExpect(jsonPath("$.address.complement").isEmpty())
                 .andExpect(jsonPath("$.address.city").value(shipment.getAddress().getCity()))
                 .andExpect(jsonPath("$.address.state").value(shipment.getAddress().getState()))
-                .andExpect(jsonPath("$.address.postalCode").value(shipment.getAddress().getPostalCode()))
+                .andExpect(jsonPath("$.address.zipCode").value(shipment.getAddress().getZipCode()))
                 .andExpect(jsonPath("$.address.referencePoint").isEmpty())
                 .andExpect(jsonPath("$.createdAt").value(shipment.getCreatedAt().toString()))
                 .andExpect(jsonPath("$.updatedAt").value(shipment.getUpdatedAt().toString()))
@@ -101,7 +101,7 @@ class ShipmentControllerIT {
                 .andExpect(jsonPath("$.address.complement").isEmpty())
                 .andExpect(jsonPath("$.address.city").value(shipment.getAddress().getCity()))
                 .andExpect(jsonPath("$.address.state").value(shipment.getAddress().getState()))
-                .andExpect(jsonPath("$.address.postalCode").value(shipment.getAddress().getPostalCode()))
+                .andExpect(jsonPath("$.address.zipCode").value(shipment.getAddress().getZipCode()))
                 .andExpect(jsonPath("$.address.referencePoint").isEmpty())
                 .andExpect(jsonPath("$.createdAt").value(shipment.getCreatedAt().toString()))
                 .andExpect(jsonPath("$.updatedAt").value(shipment.getUpdatedAt().toString()));
@@ -152,7 +152,7 @@ class ShipmentControllerIT {
                 .andExpect(jsonPath("$.address.complement").isEmpty())
                 .andExpect(jsonPath("$.address.city").value(shipment.getAddress().getCity()))
                 .andExpect(jsonPath("$.address.state").value(shipment.getAddress().getState()))
-                .andExpect(jsonPath("$.address.postalCode").value(shipment.getAddress().getPostalCode()))
+                .andExpect(jsonPath("$.address.zipCode").value(shipment.getAddress().getZipCode()))
                 .andExpect(jsonPath("$.address.referencePoint").isEmpty())
                 .andExpect(jsonPath("$.createdAt").value(shipment.getCreatedAt().toString()))
                 .andExpect(jsonPath("$.updatedAt").value(shipment.getUpdatedAt().toString()));
@@ -214,7 +214,7 @@ class ShipmentControllerIT {
                          "complement": null,
                          "city": "São Paulo",
                          "state": "SP",
-                         "postalCode": "01310200",
+                         "zipCode": "01310200",
                          "referencePoint": null
                      }
                  }

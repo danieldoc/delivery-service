@@ -42,7 +42,7 @@ public class ShipmentMapper {
                         .complement(shipment.getAddress().getComplement())
                         .city(shipment.getAddress().getCity())
                         .state(shipment.getAddress().getState())
-                        .postalCode(shipment.getAddress().getPostalCode())
+                        .zipCode(shipment.getAddress().getZipCode())
                         .referencePoint(shipment.getAddress().getReferencePoint())
                         .build())
                 .createdAt(shipment.getCreatedAt())
@@ -71,7 +71,7 @@ public class ShipmentMapper {
                         .complement(shipmentRequest.getAddress().getComplement())
                         .city(shipmentRequest.getAddress().getCity())
                         .state(shipmentRequest.getAddress().getState())
-                        .postalCode(shipmentRequest.getAddress().getPostalCode())
+                        .zipCode(shipmentRequest.getAddress().getZipCode())
                         .referencePoint(shipmentRequest.getAddress().getReferencePoint())
                         .build())
                 .build();
@@ -92,7 +92,7 @@ public class ShipmentMapper {
         shipment.getAddress().setComplement(shipmentRequest.getAddress().getComplement());
         shipment.getAddress().setCity(shipmentRequest.getAddress().getCity());
         shipment.getAddress().setState(shipmentRequest.getAddress().getState());
-        shipment.getAddress().setPostalCode(shipmentRequest.getAddress().getPostalCode());
+        shipment.getAddress().setZipCode(shipmentRequest.getAddress().getZipCode());
         shipment.getAddress().setReferencePoint(shipmentRequest.getAddress().getReferencePoint());
 
         return shipment;

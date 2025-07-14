@@ -30,8 +30,8 @@ public class Address {
     @Column(name = "address_state", length = 60, nullable = false)
     private String state;
 
-    @Column(name = "address_postal_code", length = 20, nullable = false)
-    private String postalCode;
+    @Column(name = "address_zip_code", length = 20, nullable = false)
+    private String zipCode;
 
     @Column(name = "address_reference_point")
     private String referencePoint;

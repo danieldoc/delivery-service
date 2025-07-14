@@ -13,7 +13,7 @@ CREATE TABLE shipment (
     address_complement VARCHAR(20),
     address_city VARCHAR(100) NOT NULL,
     address_state VARCHAR(60) NOT NULL,
-    address_postal_code VARCHAR(20) NOT NULL,
+    address_zip_code VARCHAR(20) NOT NULL,
     address_reference_point VARCHAR(255),
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
