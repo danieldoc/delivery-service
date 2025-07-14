@@ -26,7 +26,7 @@ import java.util.Optional;
         })
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @ContextConfiguration(classes = TestConfig.class)
-class ShipmentRepositoryTest {
+class ShipmentRepositoryIT {
 
     @Autowired
     private TestEntityManager entityManager;
