@@ -10,13 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -91,7 +92,21 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers,
                                                                   HttpStatusCode status,
                                                                   WebRequest request) {
-        return handleValidationInternal(ex, ex.getBindingResult(), headers, status, request);
+        return handleValidationInternal(ex, ex.getBindingResult().getAllErrors(), headers, status, request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleHandlerMethodValidationException(
+            HandlerMethodValidationException ex,
+            HttpHeaders headers,
+            HttpStatusCode status,
+            WebRequest request) {
+
+        List<ObjectError> errors = ex.getBeanResults().stream()
+                .flatMap(bean -> bean.getAllErrors().stream())
+                .toList();
+
+        return handleValidationInternal(ex, errors, headers, status, request);
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
@@ -118,13 +133,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     private ResponseEntity<Object> handleValidationInternal(Exception ex,
-                                                            BindingResult bindingResult,
+                                                            List<? extends ObjectError> objectErrors,
                                                             HttpHeaders headers,
                                                             HttpStatusCode status,
                                                             WebRequest request) {
         String detail = messageSource.getMessage("exception.invalidData", null, LocaleContextHolder.getLocale());
 
-        List<ErrorResponse.Field> problemFields = bindingResult.getAllErrors().stream()
+        List<ErrorResponse.Field> problemFields = objectErrors.stream()
                 .map(objectError -> {
                     String message = messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
 
