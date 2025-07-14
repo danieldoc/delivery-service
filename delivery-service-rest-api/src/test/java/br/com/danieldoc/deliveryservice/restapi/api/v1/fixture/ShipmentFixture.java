@@ -23,7 +23,7 @@ public final class ShipmentFixture {
                 .packageQuantity(2)
                 .deliveryDeadline(OffsetDateTime.MAX)
                 .customer(Customer.builder()
-                        .document("12345678900")
+                        .document("96293583019")
                         .fullName("João da Silva")
                         .cellphone(null)
                         .email(null)
@@ -49,7 +49,7 @@ public final class ShipmentFixture {
         request.setDeliveryDeadline(OffsetDateTime.parse("2025-12-31T23:59:59Z"));
 
         CustomerRequest customer = new CustomerRequest();
-        customer.setDocument("9999999999");
+        customer.setDocument("96293583019");
         customer.setFullName("Novo Nome");
         customer.setCellphone("222");
         customer.setEmail("novo@email.com");

@@ -202,7 +202,7 @@ class ShipmentControllerIT {
                      "packageQuantity": 2,
                      "deliveryDeadline": "2025-07-31T23:59:59-03:00",
                      "customer": {
-                         "document": "12345678900",
+                         "document": "96293583019",
                          "fullName": "João da Silva",
                          "cellphone": "11987654321",
                          "email": "joao.silva@example.com"
