@@ -88,6 +88,7 @@ cd delivery-service
 
 - ### 2.2 Utilizando estrutura local (Java/Maven/MySQL)
 
+   Certifique-se de ter o MySQL rodando localmente ou em um container. Crie o banco de dados `delivery_service_db` e configure as credenciais no arquivo `application.yml`.
    ```bash
    mvn clean spring-boot:run -pl delivery-service-rest-api
    ```
