@@ -19,47 +19,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static br.com.danieldoc.deliveryservice.restapi.api.v1.ShipmentApi.NOT_FOUND_RESPONSE_EXAMPLE;
-import static br.com.danieldoc.deliveryservice.restapi.api.v1.ShipmentApi.SERVER_ERROR_RESPONSE_EXAMPLE;
+import static br.com.danieldoc.deliveryservice.restapi.api.v1.util.ConstOpenApiResponse.Common.NOT_FOUND_RESPONSE_EXAMPLE;
+import static br.com.danieldoc.deliveryservice.restapi.api.v1.util.ConstOpenApiResponse.Common.SERVER_ERROR_RESPONSE_EXAMPLE;
+import static br.com.danieldoc.deliveryservice.restapi.api.v1.util.ConstOpenApiResponse.ShipmentStatusApi.*;
 
 @Tag(name = "Shipment Status")
 @RequestMapping("/v1/shipments/{shipmentCode}")
 public interface ShipmentStatusApi {
-
-    String LIST_SHIPMENT_STATUS_HISTORY_EXAMPLE = """
-            [
-                {
-                    "status": "CREATED",
-                    "createdAt": "2025-07-14T04:10:05Z"
-                },
-                {
-                    "status": "PICKED_UP",
-                    "createdAt": "2025-07-14T04:10:46Z"
-                },
-                {
-                    "status": "DELIVERED",
-                    "createdAt": "2025-07-14T04:11:18Z"
-                }
-            ]
-            """;
-
-    String SHIPMENT_PICKUP_REQUEST_EXAMPLE = """
-            {
-                "trackingCode": "AA123456789BR"
-            }
-            """;
-
-    String SHIPMENT_DELIVERY_REQUEST_EXAMPLE = """
-            {
-                "receiverName": "Maria da Silva"
-            }
-            """;
-
-    String SHIPMENT_CANCELLATION_REQUEST_EXAMPLE = """
-            {
-                "reason": "Cliente solicitou cancelamento"
-            }
-            """;
 
     @Operation(summary = "Find Shipment Status History")
     @ApiResponses(value = {
