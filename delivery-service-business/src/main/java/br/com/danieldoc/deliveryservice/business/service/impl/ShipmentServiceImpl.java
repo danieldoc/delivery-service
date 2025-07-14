@@ -45,7 +45,7 @@ public class ShipmentServiceImpl implements ShipmentService {
         log.info("Start save shipment");
         final boolean isCreation = Objects.isNull(shipment.getId());
 
-        if (isCreation && shipment.cantBeUpdatedOrDeleted()) {
+        if (shipment.cantBeUpdatedOrDeleted()) {
             throw new DeliveryServiceBusinessException(
                     "Entrega não pode ser atualizada pois seu status é: " + shipment.getStatus().getDescription()
             );
