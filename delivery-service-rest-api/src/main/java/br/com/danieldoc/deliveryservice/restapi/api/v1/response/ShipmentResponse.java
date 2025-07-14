@@ -19,7 +19,7 @@ public class ShipmentResponse {
     private String trackingCode;
     private OffsetDateTime deliveredAt;
     private String receiverName;
-    private OffsetDateTime cancelledAt;
+    private OffsetDateTime canceledAt;
     private String cancellationReason;
     private CustomerResponse customer;
     private AddressResponse address;

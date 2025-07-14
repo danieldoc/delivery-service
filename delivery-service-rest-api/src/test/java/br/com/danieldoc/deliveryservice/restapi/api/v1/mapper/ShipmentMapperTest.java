@@ -32,6 +32,13 @@ class ShipmentMapperTest {
         assertEquals(shipment.getCreatedAt(), response.getCreatedAt());
         assertEquals(shipment.getUpdatedAt(), response.getUpdatedAt());
 
+        assertEquals(shipment.getStatus(), response.getStatus());
+        assertEquals(shipment.getTrackingCode(), response.getTrackingCode());
+        assertEquals(shipment.getDeliveredAt(), response.getDeliveredAt());
+        assertEquals(shipment.getReceiverName(), response.getReceiverName());
+        assertEquals(shipment.getCanceledAt(), response.getCanceledAt());
+        assertEquals(shipment.getCancellationReason(), response.getCancellationReason());
+
         // Customer
         assertNotNull(response.getCustomer());
         assertEquals(shipment.getCustomer().getDocument(), response.getCustomer().getDocument());

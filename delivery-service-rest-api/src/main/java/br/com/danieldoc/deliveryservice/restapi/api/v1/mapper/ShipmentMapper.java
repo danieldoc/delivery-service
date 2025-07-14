@@ -27,7 +27,7 @@ public class ShipmentMapper {
                 .trackingCode(shipment.getTrackingCode())
                 .deliveredAt(shipment.getDeliveredAt())
                 .receiverName(shipment.getReceiverName())
-                .cancelledAt(shipment.getCanceledAt())
+                .canceledAt(shipment.getCanceledAt())
                 .cancellationReason(shipment.getCancellationReason())
                 .customer(CustomerResponse.builder()
                         .document(shipment.getCustomer().getDocument())
