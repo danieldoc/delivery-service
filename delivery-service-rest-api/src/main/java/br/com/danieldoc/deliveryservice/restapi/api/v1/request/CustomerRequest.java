@@ -1,5 +1,6 @@
 package br.com.danieldoc.deliveryservice.restapi.api.v1.request;
 
+import br.com.danieldoc.deliveryservice.domain.constraintvalidator.CPF;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +12,7 @@ import lombok.Setter;
 public class CustomerRequest {
 
     @NotBlank
-    @Size(min = 11, max = 11)
+    @CPF
     private String document;
 
     @NotBlank

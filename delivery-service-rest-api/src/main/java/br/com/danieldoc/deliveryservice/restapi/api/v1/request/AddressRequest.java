@@ -1,5 +1,6 @@
 package br.com.danieldoc.deliveryservice.restapi.api.v1.request;
 
+import br.com.danieldoc.deliveryservice.domain.constraintvalidator.CEP;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class AddressRequest {
     @NotBlank
     private String state;
 
-    @Size(min = 8, max = 8)
+    @CEP
     @NotBlank
     private String zipCode;
 
