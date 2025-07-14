@@ -21,6 +21,26 @@ A solução, organizada em módulos Maven, utiliza MySQL em produção, H2 e Moc
 
 ---
 
+## Shipment Lifetime
+
+```mermaid
+graph TD
+    A[Criado - CREATED] --> B{Remessa foi separada ?};
+    B -- Não --> F[CANCELLED];
+    B -- Sim --> C[Remessa Coletada - PICKED_UP];
+
+    C --> H[Fluxo da Transportadora];
+
+    H --> D{Morador Recebeu ?};
+    D -- Não --> F;
+    D -- Sim --> E[DELIVERED];
+
+    E --> G[Finalizado];
+    F --> G;
+```
+
+---
+
 ## Tech Stack
 
 - Java 21
