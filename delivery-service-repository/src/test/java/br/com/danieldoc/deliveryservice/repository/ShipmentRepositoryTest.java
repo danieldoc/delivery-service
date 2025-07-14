@@ -65,4 +65,22 @@ class ShipmentRepositoryTest {
         Optional<Shipment> optionalShipment = shipmentRepository.findByCodeAndNotDeleted("non-existent-code");
         Assertions.assertTrue(optionalShipment.isEmpty());
     }
+
+    @Test
+    void testGivenExistsByCodeAndNotDeleted_WhenCodeExistsAndDeletedIsFalse_ThenReturnsTrue() {
+        boolean exists = shipmentRepository.existsByCodeAndNotDeleted(shipmentNotDeleted.getCode());
+        Assertions.assertTrue(exists);
+    }
+
+    @Test
+    void testGivenExistsByCodeAndNotDeleted_WhenCodeExistsAndDeletedIsTrue_ThenReturnsFalse() {
+        boolean exists = shipmentRepository.existsByCodeAndNotDeleted(shipmentDeleted.getCode());
+        Assertions.assertFalse(exists);
+    }
+
+    @Test
+    void testGivenExistsByCodeAndNotDeleted_WhenFindNonExistentCode_ThenReturnsFalse() {
+        boolean exists = shipmentRepository.existsByCodeAndNotDeleted("non-existent-code");
+        Assertions.assertFalse(exists);
+    }
 }
