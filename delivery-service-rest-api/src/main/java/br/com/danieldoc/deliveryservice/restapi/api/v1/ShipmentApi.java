@@ -29,7 +29,7 @@ public interface ShipmentApi {
 
     @Operation(summary = "Get a shipment by code")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Shipment found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SHIPMENT_RESPONSE_EXAMPLE))),
+            @ApiResponse(responseCode = "200", description = "Shipment found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ShipmentResponse.class, example = SHIPMENT_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
     })
@@ -38,7 +38,7 @@ public interface ShipmentApi {
 
     @Operation(summary = "Create a new shipment")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Successfully created", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SHIPMENT_RESPONSE_EXAMPLE))),
+            @ApiResponse(responseCode = "201", description = "Successfully created", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ShipmentResponse.class, example = SHIPMENT_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "400", description = "Validation error occurred", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
     })
@@ -53,7 +53,7 @@ public interface ShipmentApi {
 
     @Operation(summary = "Update a shipment by code")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully updated", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SHIPMENT_RESPONSE_EXAMPLE))),
+            @ApiResponse(responseCode = "200", description = "Successfully updated", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ShipmentResponse.class, example = SHIPMENT_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "400", description = "Validation error occurred", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "404", description = "Shipment not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = NOT_FOUND_RESPONSE_EXAMPLE))),
             @ApiResponse(responseCode = "500", description = "Internal server error was thrown", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(example = SERVER_ERROR_RESPONSE_EXAMPLE))),
