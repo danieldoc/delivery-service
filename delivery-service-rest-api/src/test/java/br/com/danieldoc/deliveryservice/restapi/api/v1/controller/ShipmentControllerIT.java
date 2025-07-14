@@ -47,10 +47,16 @@ class ShipmentControllerIT {
                 .andExpect(jsonPath("$.code").value(shipment.getCode()))
                 .andExpect(jsonPath("$.packageQuantity").value(shipment.getPackageQuantity()))
                 .andExpect(jsonPath("$.deliveryDeadline").value(shipment.getDeliveryDeadline().toString()))
+                .andExpect(jsonPath("$.status").value(shipment.getStatus().name()))
+                .andExpect(jsonPath("$.trackingCode").value(shipment.getTrackingCode()))
+                .andExpect(jsonPath("$.receiverName").value(shipment.getReceiverName()))
+                .andExpect(jsonPath("$.deliveredAt").value(shipment.getDeliveredAt()))
+                .andExpect(jsonPath("$.cancellationReason").value(shipment.getCancellationReason()))
+                .andExpect(jsonPath("$.canceledAt").value(shipment.getCanceledAt()))
                 .andExpect(jsonPath("$.customer.document").value(shipment.getCustomer().getDocument()))
                 .andExpect(jsonPath("$.customer.fullName").value(shipment.getCustomer().getFullName()))
-                .andExpect(jsonPath("$.customer.cellphone").isEmpty())
-                .andExpect(jsonPath("$.customer.email").isEmpty())
+                .andExpect(jsonPath("$.customer.cellphone").value(shipment.getCustomer().getCellphone()))
+                .andExpect(jsonPath("$.customer.email").value(shipment.getCustomer().getEmail()))
                 .andExpect(jsonPath("$.address.street").value(shipment.getAddress().getStreet()))
                 .andExpect(jsonPath("$.address.number").value(shipment.getAddress().getNumber()))
                 .andExpect(jsonPath("$.address.neighborhood").value(shipment.getAddress().getNeighborhood()))
@@ -79,10 +85,16 @@ class ShipmentControllerIT {
                 .andExpect(jsonPath("$.code").value(shipment.getCode()))
                 .andExpect(jsonPath("$.packageQuantity").value(shipment.getPackageQuantity()))
                 .andExpect(jsonPath("$.deliveryDeadline").value(shipment.getDeliveryDeadline().toString()))
+                .andExpect(jsonPath("$.status").value(shipment.getStatus().name()))
+                .andExpect(jsonPath("$.trackingCode").value(shipment.getTrackingCode()))
+                .andExpect(jsonPath("$.receiverName").value(shipment.getReceiverName()))
+                .andExpect(jsonPath("$.deliveredAt").value(shipment.getDeliveredAt()))
+                .andExpect(jsonPath("$.cancellationReason").value(shipment.getCancellationReason()))
+                .andExpect(jsonPath("$.canceledAt").value(shipment.getCanceledAt()))
                 .andExpect(jsonPath("$.customer.document").value(shipment.getCustomer().getDocument()))
                 .andExpect(jsonPath("$.customer.fullName").value(shipment.getCustomer().getFullName()))
-                .andExpect(jsonPath("$.customer.cellphone").isEmpty())
-                .andExpect(jsonPath("$.customer.email").isEmpty())
+                .andExpect(jsonPath("$.customer.cellphone").value(shipment.getCustomer().getCellphone()))
+                .andExpect(jsonPath("$.customer.email").value(shipment.getCustomer().getEmail()))
                 .andExpect(jsonPath("$.address.street").value(shipment.getAddress().getStreet()))
                 .andExpect(jsonPath("$.address.number").value(shipment.getAddress().getNumber()))
                 .andExpect(jsonPath("$.address.neighborhood").value(shipment.getAddress().getNeighborhood()))
@@ -124,10 +136,16 @@ class ShipmentControllerIT {
                 .andExpect(jsonPath("$.code").value(shipment.getCode()))
                 .andExpect(jsonPath("$.packageQuantity").value(shipment.getPackageQuantity()))
                 .andExpect(jsonPath("$.deliveryDeadline").value(shipment.getDeliveryDeadline().toString()))
+                .andExpect(jsonPath("$.status").value(shipment.getStatus().name()))
+                .andExpect(jsonPath("$.trackingCode").value(shipment.getTrackingCode()))
+                .andExpect(jsonPath("$.receiverName").value(shipment.getReceiverName()))
+                .andExpect(jsonPath("$.deliveredAt").value(shipment.getDeliveredAt()))
+                .andExpect(jsonPath("$.cancellationReason").value(shipment.getCancellationReason()))
+                .andExpect(jsonPath("$.canceledAt").value(shipment.getCanceledAt()))
                 .andExpect(jsonPath("$.customer.document").value(shipment.getCustomer().getDocument()))
                 .andExpect(jsonPath("$.customer.fullName").value(shipment.getCustomer().getFullName()))
-                .andExpect(jsonPath("$.customer.cellphone").isEmpty())
-                .andExpect(jsonPath("$.customer.email").isEmpty())
+                .andExpect(jsonPath("$.customer.cellphone").value(shipment.getCustomer().getCellphone()))
+                .andExpect(jsonPath("$.customer.email").value(shipment.getCustomer().getEmail()))
                 .andExpect(jsonPath("$.address.street").value(shipment.getAddress().getStreet()))
                 .andExpect(jsonPath("$.address.number").value(shipment.getAddress().getNumber()))
                 .andExpect(jsonPath("$.address.neighborhood").value(shipment.getAddress().getNeighborhood()))
@@ -186,8 +204,8 @@ class ShipmentControllerIT {
                      "customer": {
                          "document": "12345678900",
                          "fullName": "João da Silva",
-                         "cellphone": null,
-                         "email": null
+                         "cellphone": "11987654321",
+                         "email": "joao.silva@example.com"
                      },
                      "address": {
                          "street": "Avenida Paulista",
