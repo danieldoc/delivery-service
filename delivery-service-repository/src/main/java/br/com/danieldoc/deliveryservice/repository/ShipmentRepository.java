@@ -11,4 +11,7 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Long> {
 
     @Query("from Shipment s where s.code = :code and s.deleted = false")
     Optional<Shipment> findByCodeAndNotDeleted(@Param("code") String code);
+
+    @Query("select (s.id > 0) from Shipment s where s.code = :code and s.deleted = false")
+    boolean existsByCodeAndNotDeleted(@Param("code") String code);
 }

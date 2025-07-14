@@ -3,6 +3,7 @@ package br.com.danieldoc.deliveryservice.business.fixture;
 import br.com.danieldoc.deliveryservice.domain.entity.Address;
 import br.com.danieldoc.deliveryservice.domain.entity.Customer;
 import br.com.danieldoc.deliveryservice.domain.entity.Shipment;
+import br.com.danieldoc.deliveryservice.domain.enums.ShipmentStatus;
 
 import java.time.OffsetDateTime;
 
@@ -23,7 +24,7 @@ public final class ShipmentFixture {
                 .createdAt(OffsetDateTime.now())
                 .updatedAt(OffsetDateTime.now())
                 .deleted(false)
-                .version(0)
+                .status(ShipmentStatus.CREATED)
                 .build();
     }
 

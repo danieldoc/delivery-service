@@ -14,4 +14,6 @@ public interface ShipmentService {
     Shipment save(@NotNull @Valid Shipment shipment);
 
     void deleteByCode(@NotBlank String code);
+
+    void existsByCodeOrFail(@NotBlank String shipmentCode);
 }

@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.Optional;
 
@@ -27,6 +28,9 @@ class ShipmentServiceImplTest {
 
     @Mock
     private ShipmentRepository shipmentRepository;
+
+    @Mock
+    private ApplicationEventPublisher eventPublisher;
 
     @Test
     void testGivenGetDetail_WhenCodeExists_ThenShouldReturnShipment() {
